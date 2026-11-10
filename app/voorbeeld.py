@@ -52,3 +52,24 @@ def voorbeeld_maand(team, key="2027-02"):
     m["wensen"].append({"emp": ids["Karin"], "dag": 11, "soort": "sterk", "reden": ""})
     m["wensen"].append({"emp": ids["Anna"], "dag": 17, "soort": "gewoon", "reden": ""})
     return m
+
+
+# Het rooster dat de rekenkern voor deze voorbeeldmaand vindt (zodat een demo meteen iets laat zien). Punt = vrij.
+VOORBEELD_ROOSTER = {
+    "Anna": "V...V...V..V...V..V...V..V..", "Bram": "....NNNNN.........NNNNN.....", "Chantal": "......LTTVV...TLTV...VLTL...",
+    "Dewi": "LLLL....LLL...LLLL...LLLL...", "Esra": ".TTT.....LT..L..VT..V..LT..L", "Fatima": "L...LLLL..LL.....LLLLL...LLL",
+    "Gerda": "T....VVV.T...VV.L...........", "Hanneke": "VLLL...L...VVLL...TVLT..VV..", "Ilse": ".VVVV..VVVV...VVNN...VVV..VV",
+    "Jeroen": "NNNN.....NNNNNNN.......NNNNN", "Karin": ".VVVT...L..TL..TVVV...TVVT..",
+}
+VOORBEELD_RAPPORT = [
+    ["Programma", "beste rooster gevonden"], ["Nachten door het dagteam", "Ilse op wo 17-2; Ilse op do 18-2"],
+    ["Voorkeur Anna", "1x op een vaste vrije dag"], ["Voorkeur Chantal", "afspraak niet gehaald: Vr V"],
+    ["Voorkeur Hanneke", "1x op een vaste vrije dag"], ["Voorkeur Karin", "afspraak niet gehaald: Wo V"],
+]
+
+
+def voorbeeld_met_rooster(team, key="2027-02"):
+    m = voorbeeld_maand(team, key)
+    m["rooster"] = {e["id"]: [("" if x == "." else x) for x in VOORBEELD_ROOSTER[e["naam"]]] for e in team["employees"]}
+    m["rapport"] = [list(r) for r in VOORBEELD_RAPPORT]
+    return m

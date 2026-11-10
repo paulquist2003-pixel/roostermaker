@@ -227,6 +227,7 @@ async function start() {
   const me = await api("GET", "/api/me");
   if (!me.ingelogd) return toonInlog(me.wachtwoord_ingesteld ? "" : "Er is op de server nog geen wachtwoord ingesteld. Zet APP_PASSWORD in Railway.");
   $("#kop").hidden = false; zetOpslag("");
+  $("#demo").hidden = !me.demo;
   route();
 }
 

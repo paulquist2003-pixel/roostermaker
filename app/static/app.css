@@ -254,3 +254,6 @@ details.extra summary { cursor: pointer; font-weight: 700; color: var(--actie); 
   .alleen-print { display: block !important; }
 }
 .alleen-print { display: none; }
+
+.demobalk { background: var(--let-licht); color: var(--let); text-align: center; padding: .45rem 16px; font-size: .9rem; border-bottom: 1px solid #F0D27A; }
+@media print { .demobalk { display: none !important; } }

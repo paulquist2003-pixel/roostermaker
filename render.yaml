@@ -1,0 +1,22 @@
+# Render Blueprint voor de DEMO (gratis, Frankfurt, geen vaste opslag).
+# Na een herstart of slaapstand begint de app opnieuw met het verzonnen voorbeeldteam.
+services:
+  - type: web
+    name: roostermaker-demo
+    runtime: docker
+    plan: free
+    region: frankfurt
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /api/gezond
+    autoDeploy: true
+    envVars:
+      - key: APP_PASSWORD
+        sync: false
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DEMO
+        value: "1"
+      - key: DATA_DIR
+        value: /tmp/data
+      - key: HTTPS_ONLY
+        value: "1"

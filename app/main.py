@@ -11,12 +11,19 @@ from .model import S, DAGNAMEN, MAANDEN, empty_team, empty_month, month_info, pr
 from .solver import solve
 from .checker import check
 from .importer import import_workbook, export_rooster
-from .voorbeeld import voorbeeld_team, voorbeeld_maand
+from .voorbeeld import voorbeeld_team, voorbeeld_maand, voorbeeld_met_rooster
 
 PASSWORD = os.environ.get("APP_PASSWORD", "")
 SECRET = os.environ.get("SECRET_KEY") or secrets.token_hex(32)
 OP_RAILWAY = bool(os.environ.get("RAILWAY_ENVIRONMENT") or os.environ.get("HTTPS_ONLY"))
 STATIC = os.path.join(os.path.dirname(__file__), "static")
+DEMO = os.environ.get("DEMO", "").lower() in ("1", "ja", "true", "yes")
+
+if DEMO and store.get("team") is None:
+    # demo zonder vaste opslag: na elke herstart begint de app met het verzonnen voorbeeldteam en een klaar rooster
+    _t = voorbeeld_team()
+    store.put("team", _t)
+    store.put("month:2027-02", voorbeeld_met_rooster(_t))
 
 app = FastAPI(title="Roostermaker", docs_url=None, redoc_url=None, openapi_url=None)
 _solve_lock = threading.Lock()
@@ -50,7 +57,7 @@ def gezond():
 
 @app.get("/api/me")
 def me(request: Request):
-    return {"ingelogd": bool(request.session.get("ok")), "wachtwoord_ingesteld": bool(PASSWORD)}
+    return {"ingelogd": bool(request.session.get("ok")), "wachtwoord_ingesteld": bool(PASSWORD), "demo": DEMO}
 
 
 @app.post("/api/login")

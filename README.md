@@ -29,7 +29,21 @@ Zacht (zo goed mogelijk): eindsaldo binnen de grens, weekuren naar rato, vaste v
 
 De rekenkern (`app/solver.py`) is een lineair programma met gehele getallen (scipy `milp`, HiGHS). `app/checker.py` controleert een rooster los daarvan, zodat ook handmatige wijzigingen worden gecontroleerd.
 
-## Op Railway zetten
+## Gratis demo op Render
+
+Voor een demo met het verzonnen voorbeeldteam (geen echte namen):
+
+1. Maak een account op [render.com](https://render.com) en koppel GitHub.
+2. Kies **New**, dan **Blueprint**, en selecteer deze repository. Render leest `render.yaml` (gratis, Frankfurt).
+3. Vul bij `APP_PASSWORD` het wachtwoord voor de demo in en klik **Apply**.
+
+Na een paar minuten staat de app op `https://roostermaker-demo.onrender.com` (of een vergelijkbaar adres). Let op:
+
+- Na 15 minuten zonder bezoek valt de app in slaap. Het eerste bezoek daarna duurt ongeveer een minuut.
+- Er is geen vaste opslag. Na de slaapstand begint de app opnieuw met het voorbeeldteam en een klaar rooster voor februari 2027.
+- De gratis server is traag; rooster maken duurt daar langer dan op een betaalde server.
+
+## Op Railway zetten (voor echt gebruik)
 
 1. Nieuw project in Railway, **Deploy from GitHub repo**, kies deze repository. Railway bouwt met de `Dockerfile`.
 2. Kies bij de service onder Settings een **EU-regio** (bijvoorbeeld Amsterdam).
