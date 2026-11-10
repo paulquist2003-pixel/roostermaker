@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Roostermaker</title>
+<link rel="icon" href="/static/icoon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/static/app.css?v=1">
+</head>
+<body>
+<header class="kop" id="kop" hidden>
+  <a class="merk" href="#/">Roostermaker</a>
+  <nav class="hoofdmenu" aria-label="Hoofdmenu">
+    <a href="#/" data-nav="maanden">Maanden</a>
+    <a href="#/team" data-nav="team">Team</a>
+    <a href="#/instellingen" data-nav="instellingen">Instellingen</a>
+  </nav>
+  <span class="opslag" id="opslag" aria-live="polite"></span>
+  <button class="knop stil klein" id="uitloggen" type="button">Uitloggen</button>
+</header>
+<main id="app" tabindex="-1"></main>
+<div id="pop" class="pop" hidden></div>
+<div id="melding" class="melding" role="status" aria-live="polite" hidden></div>
+<dialog id="dlg" class="dlg"></dialog>
+<script src="/static/app.js?v=1"></script>
+</body>
+</html>

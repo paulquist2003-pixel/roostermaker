@@ -1,0 +1,7 @@
+data/
+tests/
+.git/
+__pycache__/
+*.xlsx
+*.json
+!railway.json

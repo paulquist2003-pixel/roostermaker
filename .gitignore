@@ -1,0 +1,12 @@
+# gegevens van het team horen NOOIT in git
+data/
+*.sqlite
+*.sqlite-*
+*.xlsx
+*.xls
+*.json
+!railway.json
+.env
+__pycache__/
+.pytest_cache/
+.venv/
